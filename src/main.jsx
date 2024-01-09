@@ -4,11 +4,10 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./Routes/Routes";
 
-
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <div>
+  <div className="md:w-[1440px] bg-white">
     <React.StrictMode>
-          <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </React.StrictMode>
   </div>
 );

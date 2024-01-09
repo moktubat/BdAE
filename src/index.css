@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.active {
+  @apply font-semibold tracking-wide text-[#A81F25] transition-colors duration-200 underline-offset-8 underline;
+}
+
+.default {
+  @apply font-semibold tracking-wide transition-colors duration-200 hover:text-[#A81F25];
+}
