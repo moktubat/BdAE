@@ -4,8 +4,8 @@ import Footer from "../../pages/Home/Shared/Footer/Footer";
 
 const Main = () => {
     return (
-        <div className="md:w-[1200px] mx-auto">
-            <Navbar></Navbar>
+        <div>
+            <Navbar className="md:w-[1200px] mx-auto"></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
