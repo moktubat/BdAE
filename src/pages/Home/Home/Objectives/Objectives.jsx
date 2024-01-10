@@ -52,7 +52,7 @@ const Objectives = () => {
           </p>
         </div>
         <div className="hidden md:block">
-          <h1 className="text-[#231F20] font-bold text-9xl uppercase tracking-tighter">Objectives</h1>
+          <h1 className="text-[#231F20] font-bold text-9xl uppercase tracking-[-0.08em]">Objectives</h1>
         </div>
       </div>
     </div>
