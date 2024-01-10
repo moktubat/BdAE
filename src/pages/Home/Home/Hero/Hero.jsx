@@ -2,7 +2,7 @@ import arrowRight from "../../../../assets/arrowRight.svg";
 import "./Hero.css";
 const Hero = () => {
   return (
-    <div className="mb-10">
+    <div className="mb-10 md:w-[1200px] mx-auto py-4 md:py-10 px-4 md:px-0">
       <div className="heroBg bg-center flex flex-col">
         <div className="flex-1 flex flex-col justify-start items-start p-10">
           <h1 className="text-white text-7xl font-bold mb-4">

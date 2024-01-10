@@ -36,7 +36,7 @@ const NavBar = () => {
       <li>
         <NavLink
           to="/register"
-          className={({ isActive }) => (isActive ? "active" : "default")}
+          className={({ isActive }) => (isActive ? "active" : "default border border-[#231F20] rounded-lg px-9 py-4")}
         >
           Register
         </NavLink>
