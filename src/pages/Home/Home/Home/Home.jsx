@@ -4,6 +4,7 @@ import Experience from "../Experience/Experience";
 import Hero from "../Hero/Hero";
 import Objectives from "../Objectives/Objectives";
 import Organized from "../Organized/Organized";
+import Register from "../Register/Register";
 const Home = () => {
     return (
         <div>
@@ -13,6 +14,7 @@ const Home = () => {
             <Objectives></Objectives>
             <Organized></Organized>
             <Exhibitor></Exhibitor>
+            <Register></Register>
         </div>
     );
 };
