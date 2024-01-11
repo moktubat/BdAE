@@ -1,5 +1,6 @@
 import { Tab } from "@headlessui/react";
 import VisitorForm from "./VisitorForm";
+import ExhibitorForm from "./ExhibitorForm";
 
 const Form = () => {
   return (
@@ -13,7 +14,9 @@ const Form = () => {
           <Tab.Panel>
             <VisitorForm></VisitorForm>
           </Tab.Panel>
-          <Tab.Panel>Content 2</Tab.Panel>
+          <Tab.Panel>
+            <ExhibitorForm></ExhibitorForm>
+          </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
     </div>
