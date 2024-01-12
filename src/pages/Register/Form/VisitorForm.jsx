@@ -2,15 +2,15 @@ import "./VisitorForm.css";
 import arrowOutward from "../../../assets/arrowOutward.svg";
 const VisitorForm = () => {
   return (
-    <div className="bg-white p-20 border-[0.5px] border-[#231F20] rounded-3xl">
+    <div className="bg-white p-4 md:p-20 border-[0.5px] border-[#231F20] rounded-3xl">
       <form>
         <div>
-          <div className="flex justify-between">
+          <div className="md:flex justify-between">
             <div className="mr-8">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Title
               </label>
-              <div className="flex text-2xl mt-8">
+              <div className="flex text-2xl mt-4 md:mt-8">
                 <label className="block mr-4">
                   <input
                     type="radio"
@@ -32,7 +32,7 @@ const VisitorForm = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-y-3">
+            <div className="flex flex-col gap-y-3 my-4 md:py-0">
               <label className="text-[#231F20] text-2xl font-semibold">
                 First Name
               </label>
@@ -58,7 +58,7 @@ const VisitorForm = () => {
               />
             </div>
           </div>
-          <div className="mt-8">
+          <div className="mt-4 md:mt-8">
             <div className="flex flex-col gap-y-3">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Email Address
@@ -73,7 +73,7 @@ const VisitorForm = () => {
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-4 md:mt-8">
             <div className="flex flex-col gap-y-3">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Phone
@@ -87,8 +87,8 @@ const VisitorForm = () => {
               />
             </div>
           </div>
-          <div className="w-full mt-8 flex gap-x-8">
-            <div className="w-1/2 flex flex-col gap-y-3">
+          <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
+            <div className="md:w-1/2 flex flex-col gap-y-3">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Company Name
               </label>
@@ -100,7 +100,7 @@ const VisitorForm = () => {
                 placeholder="Company Name"
               />
             </div>
-            <div className="w-1/2 flex flex-col gap-y-3">
+            <div className="md:w-1/2 mt-4 md:mt-0 flex flex-col gap-y-3">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Job Title
               </label>
@@ -113,8 +113,8 @@ const VisitorForm = () => {
               />
             </div>
           </div>
-          <div className="w-full mt-8 flex gap-x-8">
-            <div className="w-1/2 flex flex-col gap-y-3">
+          <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
+            <div className="md:w-1/2 flex flex-col gap-y-3">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Job Title
               </label>
@@ -126,7 +126,7 @@ const VisitorForm = () => {
                 placeholder="Job Title"
               />
             </div>
-            <div className="w-1/2 flex flex-col gap-y-3">
+            <div className="md:w-1/2 flex flex-col gap-y-3 mt-4 md:mt-0">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Concern Department
               </label>
@@ -139,7 +139,7 @@ const VisitorForm = () => {
               />
             </div>
           </div>
-          <div className="w-full mt-8 flex gap-x-8">
+          <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
             <div className="flex flex-col gap-y-3">
               <label className="text-[#231F20] text-2xl font-semibold">
                 House No.
@@ -152,7 +152,7 @@ const VisitorForm = () => {
                 placeholder="House No."
               />
             </div>
-            <div className="flex flex-col gap-y-3">
+            <div className="flex flex-col gap-y-3 my-4 md:my-0">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Road No.
               </label>
@@ -178,7 +178,7 @@ const VisitorForm = () => {
               />
             </div>
           </div>
-          <div className="w-full mt-8 flex gap-x-8">
+          <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
             <div className="flex flex-col gap-y-3">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Sector
@@ -191,7 +191,7 @@ const VisitorForm = () => {
                 placeholder="Sector"
               />
             </div>
-            <div className="flex flex-col gap-y-3">
+            <div className="flex flex-col gap-y-3 my-4 md:my-0">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Area
               </label>
@@ -217,7 +217,7 @@ const VisitorForm = () => {
               />
             </div>
           </div>
-          <div className="w-full mt-8 flex gap-x-8">
+          <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
             <div className="flex flex-col gap-y-3">
               <label className="text-[#231F20] text-2xl font-semibold">
                 State / region
@@ -230,7 +230,7 @@ const VisitorForm = () => {
                 placeholder="State / region"
               />
             </div>
-            <div className="flex flex-col gap-y-3">
+            <div className="flex flex-col gap-y-3 my-4 md:my-0">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Zip / Postal Code
               </label>
@@ -273,7 +273,7 @@ const VisitorForm = () => {
                   htmlFor="radio1"
                   className="flex items-center cursor-pointer"
                 >
-                  <span className="w-4 h-4 inline-block mr-4 border border-grey"></span>
+                  <span className="w-4 h-4 inline-block mr-1 md:mr-4 border border-grey"></span>
                   Apparel/Textiles
                 </label>
               </div>
@@ -289,7 +289,7 @@ const VisitorForm = () => {
                   htmlFor="radio2"
                   className="flex items-center cursor-pointer"
                 >
-                  <span className="w-4 h-4 inline-block mr-4 border border-grey"></span>
+                  <span className="w-4 h-4 inline-block mr-1 md:mr-4 border border-grey"></span>
                   Leather
                 </label>
               </div>
@@ -305,7 +305,7 @@ const VisitorForm = () => {
                   htmlFor="radio3"
                   className="flex items-center cursor-pointer"
                 >
-                  <span className="w-4 h-4 inline-block mr-4 border border-grey"></span>
+                  <span className="w-4 h-4 inline-block mr-1 md:mr-4 border border-grey"></span>
                   Digital Industry
                 </label>
               </div>
@@ -321,7 +321,7 @@ const VisitorForm = () => {
                   htmlFor="radio4"
                   className="flex items-center cursor-pointer"
                 >
-                  <span className="w-4 h-4 inline-block mr-4 border border-grey"></span>
+                  <span className="w-4 h-4 inline-block mr-1 md:mr-4 border border-grey"></span>
                   Pharmaceutical/Health
                 </label>
               </div>
@@ -337,7 +337,7 @@ const VisitorForm = () => {
                   htmlFor="radio5"
                   className="flex items-center cursor-pointer"
                 >
-                  <span className="w-4 h-4 inline-block mr-4 border border-grey"></span>
+                  <span className="w-4 h-4 inline-block mr-1 md:mr-4 border border-grey"></span>
                   Light Engineering/Electronic
                 </label>
               </div>
@@ -353,7 +353,7 @@ const VisitorForm = () => {
                   htmlFor="radio6"
                   className="flex items-center cursor-pointer"
                 >
-                  <span className="w-4 h-4 inline-block mr-4 border border-grey"></span>
+                  <span className="w-4 h-4 inline-block mr-1 md:mr-4 border border-grey"></span>
                   Agro-Food
                 </label>
               </div>
@@ -369,7 +369,7 @@ const VisitorForm = () => {
                   htmlFor="radio7"
                   className="flex items-center cursor-pointer"
                 >
-                  <span className="w-4 h-4 inline-block mr-4 border border-grey"></span>
+                  <span className="w-4 h-4 inline-block mr-1 md:mr-4 border border-grey"></span>
                   FMCG
                 </label>
               </div>
@@ -385,7 +385,7 @@ const VisitorForm = () => {
                   htmlFor="radio8"
                   className="flex items-center cursor-pointer"
                 >
-                  <span className="w-4 h-4 inline-block mr-4 border border-grey"></span>
+                  <span className="w-4 h-4 inline-block mr-1 md:mr-4 border border-grey"></span>
                   Ceramic
                 </label>
               </div>
@@ -401,7 +401,7 @@ const VisitorForm = () => {
                   htmlFor="radio9"
                   className="flex items-center cursor-pointer"
                 >
-                  <span className="w-4 h-4 inline-block mr-4 border border-grey"></span>
+                  <span className="w-4 h-4 inline-block mr-1 md:mr-4 border border-grey"></span>
                   Jute
                 </label>
               </div>
@@ -417,7 +417,7 @@ const VisitorForm = () => {
                   htmlFor="radio10"
                   className="flex items-center cursor-pointer"
                 >
-                  <span className="w-4 h-4 inline-block mr-4 border border-grey"></span>
+                  <span className="w-4 h-4 inline-block mr-1 md:mr-4 border border-grey"></span>
                   Bicycle
                 </label>
               </div>
@@ -430,12 +430,12 @@ const VisitorForm = () => {
           </div>
 
           <div className="mt-12">
-            <div className="bg-[#231F20] text-white flex justify-between items-center px-8 py-9 rounded-lg">
+            <div className="bg-[#231F20] text-white md:flex justify-between items-center px-8 py-9 rounded-lg">
               <div>
-                <p className="text-xs font-medium">
+                <p className="text-xs font-medium mb-8 md:mb-0">
                   If you face any difficulties to fill up visitor registration
                   form or login with correct information,
-                  <br />
+                  <br className="hidden md:block" />
                   please feel free to contact us at
                   registration@bangladeshapparelexchange.com
                 </p>

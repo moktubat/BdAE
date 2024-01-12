@@ -3,14 +3,14 @@ import arrowOutward from "../../../assets/arrowOutward.svg";
 
 const ExhibitorForm = () => {
   return (
-    <div className="bg-white p-20 border-[0.5px] border-[#231F20] rounded-3xl">
+    <div className="bg-white p-4 md:p-20 border-[0.5px] border-[#231F20] rounded-3xl">
       <form>
         <div>
           <div>
-            <h1 className="text-[32px] font-bold uppercase mb-20">
+            <h1 className="text-[32px] font-bold uppercase mb-5 md:mb-20">
               Exhibitor Contact Information
             </h1>
-            <div className="flex justify-between">
+            <div className="md:flex justify-between">
               <div className="mr-8">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Title
@@ -37,7 +37,7 @@ const ExhibitorForm = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-y-3">
+              <div className="flex flex-col gap-y-3 my-4 md:my-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   First Name
                 </label>
@@ -63,7 +63,7 @@ const ExhibitorForm = () => {
                 />
               </div>
             </div>
-            <div className="mt-8">
+            <div className="mt-4 md:mt-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Email Address
@@ -77,7 +77,7 @@ const ExhibitorForm = () => {
                 />
               </div>
             </div>
-            <div className="mt-8">
+            <div className="mt-4 md:mt-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Phone
@@ -91,7 +91,7 @@ const ExhibitorForm = () => {
                 />
               </div>
             </div>
-            <div className="w-full mt-8 flex gap-x-8">
+            <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Company Name
@@ -104,7 +104,7 @@ const ExhibitorForm = () => {
                   placeholder="Company Name"
                 />
               </div>
-              <div className="flex flex-col gap-y-3">
+              <div className="flex flex-col gap-y-3 my-4 md:my-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Designation
                 </label>
@@ -133,10 +133,10 @@ const ExhibitorForm = () => {
           </div>
 
           <div>
-            <h1 className="text-[32px] font-bold uppercase my-20">
+            <h1 className="text-[32px] font-bold uppercase my-8 md:my-20">
               Exhibitor Company Information
             </h1>
-            <div className="flex justify-between">
+            <div className="md:flex justify-between">
               <div className="mr-8">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Title
@@ -163,7 +163,7 @@ const ExhibitorForm = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-y-3">
+              <div className="flex flex-col gap-y-3 my-4 md:my-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   First Name
                 </label>
@@ -189,7 +189,7 @@ const ExhibitorForm = () => {
                 />
               </div>
             </div>
-            <div className="mt-8">
+            <div className="mt-4 md:mt-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Email Address
@@ -203,7 +203,7 @@ const ExhibitorForm = () => {
                 />
               </div>
             </div>
-            <div className="mt-8">
+            <div className="mt-4 md:mt-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Phone
@@ -217,7 +217,7 @@ const ExhibitorForm = () => {
                 />
               </div>
             </div>
-            <div className="mt-8">
+            <div className="mt-4 md:mt-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Designation
@@ -234,10 +234,10 @@ const ExhibitorForm = () => {
           </div>
 
           <div>
-            <h1 className="text-[32px] font-bold uppercase my-20">
+            <h1 className="text-[32px] font-bold uppercase my-8 md:my-20">
               Exhibitor Company Information
             </h1>
-            <div className="w-full mt-8 grid grid-cols-3 gap-x-8">
+            <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-3 gap-y-4 gap-x-8 md:gap-y-0">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Company Name
@@ -275,7 +275,7 @@ const ExhibitorForm = () => {
                   placeholder="Industry Type"
                 />
               </div>
-              <div className="flex flex-col gap-y-3 mt-5">
+              <div className="flex flex-col gap-y-3 md:mt-5">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Product type
                 </label>
@@ -287,7 +287,7 @@ const ExhibitorForm = () => {
                   placeholder="Product type"
                 />
               </div>
-              <div className="flex flex-col gap-y-3 mt-5">
+              <div className="flex flex-col gap-y-3 md:mt-5">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Key Clients
                 </label>
@@ -303,10 +303,10 @@ const ExhibitorForm = () => {
           </div>
 
           <div>
-            <h1 className="text-[32px] font-bold uppercase my-20">
+            <h1 className="text-[32px] font-bold uppercase my-8 md:my-20">
               Company Address
             </h1>
-            <div className="w-full mt-8 flex gap-x-8">
+            <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   House No.
@@ -319,7 +319,7 @@ const ExhibitorForm = () => {
                   placeholder="House No."
                 />
               </div>
-              <div className="flex flex-col gap-y-3">
+              <div className="flex flex-col gap-y-3 my-4 md:my-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Road No.
                 </label>
@@ -345,7 +345,7 @@ const ExhibitorForm = () => {
                 />
               </div>
             </div>
-            <div className="w-full mt-8 flex gap-x-8">
+            <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Sector
@@ -358,7 +358,7 @@ const ExhibitorForm = () => {
                   placeholder="Sector"
                 />
               </div>
-              <div className="flex flex-col gap-y-3">
+              <div className="flex flex-col gap-y-3 my-4 md:my-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Area
                 </label>
@@ -384,7 +384,7 @@ const ExhibitorForm = () => {
                 />
               </div>
             </div>
-            <div className="w-full mt-8 flex gap-x-8">
+            <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   State / region
@@ -397,7 +397,7 @@ const ExhibitorForm = () => {
                   placeholder="State / region"
                 />
               </div>
-              <div className="flex flex-col gap-y-3">
+              <div className="flex flex-col gap-y-3 my-4 md:my-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Zip / Postal Code
                 </label>
@@ -423,7 +423,7 @@ const ExhibitorForm = () => {
                 />
               </div>
             </div>
-            <div className="mt-8">
+            <div className="mt-4 md:mt-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Participation in Other Exhibitions
@@ -437,7 +437,7 @@ const ExhibitorForm = () => {
                 />
               </div>
             </div>
-            <div className="mt-8">
+            <div className="mt-4 md:mt-8">
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Type of business relation you are looking for
@@ -454,7 +454,7 @@ const ExhibitorForm = () => {
           </div>
 
           <div>
-            <h1 className="text-[32px] font-bold uppercase my-20">
+            <h1 className="text-[32px] font-bold uppercase my-8 md:my-20">
               Booth Details
             </h1>
             <div>
@@ -483,15 +483,15 @@ const ExhibitorForm = () => {
               </div>
             </div>
             <div className="mt-12">
-              <div className="bg-[#231F20] text-white flex justify-between items-center px-8 py-9 rounded-lg">
+              <div className="bg-[#231F20] text-white md:flex justify-between items-center px-8 py-9 rounded-lg">
                 <div>
-                  <p className="text-xs font-medium">
+                  <p className="text-xs font-medium mb-8 md:mb-0">
                     Submitting this application does not guarantee your spot in
                     Bangladesh Apparel Expo.
-                    <br />
+                    <br className="hidden md:block" />
                     If you face any difficulties to fill up exhibitor
                     registration form or login with correct information,
-                    <br />
+                    <br className="hidden md:block" />
                     please feel free to contact us at
                     registration@bangladeshapparelexchange.com
                   </p>
