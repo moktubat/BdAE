@@ -1,10 +1,20 @@
 import "./ExhibitorForm.css";
 import arrowOutward from "../../../assets/arrowOutward.svg";
+import { useForm } from "react-hook-form";
 
 const ExhibitorForm = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <div className="bg-white p-4 md:p-20 border-[0.5px] border-[#231F20] rounded-3xl">
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div>
             <h1 className="text-[32px] font-bold uppercase mb-5 md:mb-20">
@@ -37,17 +47,25 @@ const ExhibitorForm = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-y-3 my-4 md:my-0">
+              <div className="flex flex-col gap-y-3 my-4 md:py-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   First Name
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                  {...register("firstName", {
+                    required: "First Name is required",
+                  })}
+                  className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                    errors.firstName ? "border-red-500" : ""
+                  }`}
                   type="text"
-                  name="name"
-                  id="name"
                   placeholder="First Name"
                 />
+                {errors.firstName && (
+                  <p className="text-red-500 text-sm">
+                    {errors.firstName.message}
+                  </p>
+                )}
               </div>
 
               <div className="flex flex-col gap-y-3">
@@ -55,12 +73,20 @@ const ExhibitorForm = () => {
                   Last Name
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                  {...register("lastName", {
+                    required: "Last Name is required",
+                  })}
+                  className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                    errors.lastName ? "border-red-500" : ""
+                  }`}
                   type="text"
-                  name="name"
-                  id="name"
                   placeholder="Last Name"
                 />
+                {errors.lastName && (
+                  <p className="text-red-500 text-sm">
+                    {errors.lastName.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="mt-4 md:mt-8">
@@ -69,12 +95,22 @@ const ExhibitorForm = () => {
                   Email Address
                 </label>
                 <input
-                  className="w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                  {...register("email", {
+                    required: "Email Address is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
+                  className={`w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                    errors.email ? "border-red-500" : ""
+                  }`}
                   type="email"
-                  name="name"
-                  id="name"
                   placeholder="Email Address"
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email.message}</p>
+                )}
               </div>
             </div>
             <div className="mt-4 md:mt-8">
@@ -83,12 +119,22 @@ const ExhibitorForm = () => {
                   Phone
                 </label>
                 <input
-                  className="w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                  {...register("phone", {
+                    required: "Phone number is required",
+                    pattern: {
+                      value: /^[+]?[0-9]*$/,
+                      message: "Invalid phone number",
+                    },
+                  })}
+                  className={`w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                    errors.phone ? "border-red-500" : ""
+                  }`}
                   type="tel"
-                  name="name"
-                  id="name"
                   placeholder="+8801234567890"
                 />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm">{errors.phone.message}</p>
+                )}
               </div>
             </div>
             <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
@@ -97,24 +143,48 @@ const ExhibitorForm = () => {
                   Company Name
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                  {...register("companyName", {
+                    required: "Company Name is required",
+                    maxLength: {
+                      value: 100,
+                      message: "Company Name should not exceed 100 characters",
+                    },
+                  })}
+                  className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                    errors.companyName ? "border-red-500" : ""
+                  }`}
                   type="text"
-                  name="name"
-                  id="name"
                   placeholder="Company Name"
                 />
+                {errors.companyName && (
+                  <p className="text-red-500 text-sm">
+                    {errors.companyName.message}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col gap-y-3 my-4 md:my-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Designation
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                  {...register("designation", {
+                    required: "Designation is required",
+                    maxLength: {
+                      value: 50,
+                      message: "Designation should not exceed 50 characters",
+                    },
+                  })}
+                  className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                    errors.designation ? "border-red-500" : ""
+                  }`}
                   type="text"
-                  name="name"
-                  id="name"
                   placeholder="Designation"
                 />
+                {errors.designation && (
+                  <p className="text-red-500 text-sm">
+                    {errors.designation.message}
+                  </p>
+                )}
               </div>
 
               <div className="flex flex-col gap-y-3">
@@ -122,19 +192,31 @@ const ExhibitorForm = () => {
                   Department
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                  {...register("department", {
+                    required: "Department is required",
+                    maxLength: {
+                      value: 50,
+                      message: "Department should not exceed 50 characters",
+                    },
+                  })}
+                  className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                    errors.department ? "border-red-500" : ""
+                  }`}
                   type="text"
-                  name="name"
-                  id="name"
                   placeholder="Department"
                 />
+                {errors.department && (
+                  <p className="text-red-500 text-sm">
+                    {errors.department.message}
+                  </p>
+                )}
               </div>
             </div>
           </div>
 
           <div>
             <h1 className="text-[32px] font-bold uppercase my-8 md:my-20">
-            Secondary Contact Person
+              Secondary Contact Person
             </h1>
             <div className="md:flex justify-between">
               <div className="mr-8">
@@ -163,59 +245,93 @@ const ExhibitorForm = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-y-3 my-4 md:my-0">
-                <label className="text-[#231F20] text-2xl font-semibold">
-                  First Name
-                </label>
-                <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="First Name"
-                />
-              </div>
+              <div className="flex flex-col gap-y-3 my-4 md:py-0">
+              <label className="text-[#231F20] text-2xl font-semibold">
+                First Name
+              </label>
+              <input
+                {...register("firstName", {
+                  required: "First Name is required",
+                })}
+                className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                  errors.firstName ? "border-red-500" : ""
+                }`}
+                type="text"
+                placeholder="First Name"
+              />
+              {errors.firstName && (
+                <p className="text-red-500 text-sm">
+                  {errors.firstName.message}
+                </p>
+              )}
+            </div>
 
-              <div className="flex flex-col gap-y-3">
-                <label className="text-[#231F20] text-2xl font-semibold">
-                  Last Name
-                </label>
-                <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Last Name"
-                />
-              </div>
+            <div className="flex flex-col gap-y-3">
+              <label className="text-[#231F20] text-2xl font-semibold">
+                Last Name
+              </label>
+              <input
+                {...register("lastName", { required: "Last Name is required" })}
+                className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                  errors.lastName ? "border-red-500" : ""
+                }`}
+                type="text"
+                placeholder="Last Name"
+              />
+              {errors.lastName && (
+                <p className="text-red-500 text-sm">
+                  {errors.lastName.message}
+                </p>
+              )}
+            </div>
             </div>
             <div className="mt-4 md:mt-8">
-              <div className="flex flex-col gap-y-3">
-                <label className="text-[#231F20] text-2xl font-semibold">
-                  Email Address
-                </label>
-                <input
-                  className="w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="email"
-                  name="name"
-                  id="name"
-                  placeholder="Email Address"
-                />
-              </div>
+            <div className="flex flex-col gap-y-3">
+              <label className="text-[#231F20] text-2xl font-semibold">
+                Email Address
+              </label>
+              <input
+                {...register("email", {
+                  required: "Email Address is required",
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    message: "Invalid email address",
+                  },
+                })}
+                className={`w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                  errors.email ? "border-red-500" : ""
+                }`}
+                type="email"
+                placeholder="Email Address"
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm">{errors.email.message}</p>
+              )}
+            </div>
             </div>
             <div className="mt-4 md:mt-8">
-              <div className="flex flex-col gap-y-3">
-                <label className="text-[#231F20] text-2xl font-semibold">
-                  Phone
-                </label>
-                <input
-                  className="w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="tel"
-                  name="name"
-                  id="name"
-                  placeholder="+8801234567890"
-                />
-              </div>
+            <div className="flex flex-col gap-y-3">
+              <label className="text-[#231F20] text-2xl font-semibold">
+                Phone
+              </label>
+              <input
+                {...register("phone", {
+                  required: "Phone number is required",
+                  pattern: {
+                    value: /^[+]?[0-9]*$/,
+                    message: "Invalid phone number",
+                  },
+                })}
+                className={`w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                  errors.phone ? "border-red-500" : ""
+                }`}
+                type="tel"
+                placeholder="+8801234567890"
+              />
+              {errors.phone && (
+                <p className="text-red-500 text-sm">{errors.phone.message}</p>
+              )}
+            </div>
             </div>
             <div className="mt-4 md:mt-8">
               <div className="flex flex-col gap-y-3">
@@ -223,12 +339,24 @@ const ExhibitorForm = () => {
                   Designation
                 </label>
                 <input
-                  className="w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                  {...register("designation", {
+                    required: "Designation is required",
+                    maxLength: {
+                      value: 50,
+                      message: "Designation should not exceed 50 characters",
+                    },
+                  })}
+                  className={`w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                    errors.designation ? "border-red-500" : ""
+                  }`}
                   type="text"
-                  name="name"
-                  id="name"
                   placeholder="Designation"
                 />
+                {errors.designation && (
+                  <p className="text-red-500 text-sm">
+                    {errors.designation.message}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -243,62 +371,122 @@ const ExhibitorForm = () => {
                   Company Name
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                  {...register("companyName", {
+                    required: "Company Name is required",
+                    maxLength: {
+                      value: 100,
+                      message: "Company Name should not exceed 100 characters",
+                    },
+                  })}
+                  className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+                    errors.companyName ? "border-red-500" : ""
+                  }`}
                   type="text"
-                  name="name"
-                  id="name"
                   placeholder="Company Name"
                 />
+                {errors.companyName && (
+                  <p className="text-red-500 text-sm">
+                    {errors.companyName.message}
+                  </p>
+                )}
               </div>
-              <div className="flex flex-col gap-y-3">
-                <label className="text-[#231F20] text-2xl font-semibold">
-                  Company Website
-                </label>
-                <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Company Website"
-                />
-              </div>
+              <div className="flex flex-col gap-y-3 my-4 md:my-0">
+        <label className="text-[#231F20] text-2xl font-semibold">
+          Company Website
+        </label>
+        <input
+          {...register("companyWebsite", {
+            required: "Company Website is required",
+            pattern: {
+              value: /^(ftp|http|https):\/\/[^ "]+$/,
+              message: "Invalid URL format",
+            },
+          })}
+          className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+            errors.companyWebsite ? "border-red-500" : ""
+          }`}
+          type="text"
+          placeholder="Company Website"
+        />
+        {errors.companyWebsite && (
+          <p className="text-red-500 text-sm">
+            {errors.companyWebsite.message}
+          </p>
+        )}
+      </div>
 
-              <div className="flex flex-col gap-y-3">
-                <label className="text-[#231F20] text-2xl font-semibold">
-                  Industry Type
-                </label>
-                <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Industry Type"
-                />
-              </div>
-              <div className="flex flex-col gap-y-3 md:mt-5">
-                <label className="text-[#231F20] text-2xl font-semibold">
-                  Product type
-                </label>
-                <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Product type"
-                />
-              </div>
-              <div className="flex flex-col gap-y-3 md:mt-5">
-                <label className="text-[#231F20] text-2xl font-semibold">
-                  Key Clients
-                </label>
-                <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Key Clients"
-                />
-              </div>
+      <div className="flex flex-col gap-y-3">
+        <label className="text-[#231F20] text-2xl font-semibold">
+          Industry Type
+        </label>
+        <input
+          {...register("industryType", {
+            required: "Industry Type is required",
+            maxLength: {
+              value: 50,
+              message: "Industry Type should not exceed 50 characters",
+            },
+          })}
+          className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+            errors.industryType ? "border-red-500" : ""
+          }`}
+          type="text"
+          placeholder="Industry Type"
+        />
+        {errors.industryType && (
+          <p className="text-red-500 text-sm">
+            {errors.industryType.message}
+          </p>
+        )}
+      </div>
+      <div className="flex flex-col gap-y-3 md:mt-5">
+        <label className="text-[#231F20] text-2xl font-semibold">
+          Product Type
+        </label>
+        <input
+          {...register("productType", {
+            required: "Product Type is required",
+            maxLength: {
+              value: 50,
+              message: "Product Type should not exceed 50 characters",
+            },
+          })}
+          className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+            errors.productType ? "border-red-500" : ""
+          }`}
+          type="text"
+          placeholder="Product Type"
+        />
+        {errors.productType && (
+          <p className="text-red-500 text-sm">
+            {errors.productType.message}
+          </p>
+        )}
+      </div>
+      <div className="flex flex-col gap-y-3 md:mt-5">
+        <label className="text-[#231F20] text-2xl font-semibold">
+          Key Clients
+        </label>
+        <input
+          {...register("keyClients", {
+            required: "Key Clients is required",
+            maxLength: {
+              value: 100,
+              message: "Key Clients should not exceed 100 characters",
+            },
+          })}
+          className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+            errors.keyClients ? "border-red-500" : ""
+          }`}
+          type="text"
+          placeholder="Key Clients"
+        />
+        {errors.keyClients && (
+          <p className="text-red-500 text-sm">
+            {errors.keyClients.message}
+          </p>
+        )}
+      </div>
             </div>
           </div>
 
@@ -312,24 +500,40 @@ const ExhibitorForm = () => {
                   House No.
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="House No."
-                />
+                {...register("houseNo", {
+                  required: "House No. is required",
+                  maxLength: {
+                    value: 50,
+                    message: "House No. should not exceed 50 characters",
+                  },
+                })}
+                className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                type="text"
+                placeholder="House No."
+              />
+              {errors.houseNo && (
+                <p className="text-red-500 text-sm">{errors.houseNo.message}</p>
+              )}
               </div>
               <div className="flex flex-col gap-y-3 my-4 md:my-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Road No.
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Road No."
-                />
+                {...register("roadNo", {
+                  required: "Road No. is required",
+                  maxLength: {
+                    value: 50,
+                    message: "Road No. should not exceed 50 characters",
+                  },
+                })}
+                className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                type="text"
+                placeholder="Road No."
+              />
+              {errors.roadNo && (
+                <p className="text-red-500 text-sm">{errors.roadNo.message}</p>
+              )}
               </div>
 
               <div className="flex flex-col gap-y-3">
@@ -337,12 +541,20 @@ const ExhibitorForm = () => {
                   Block
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Block"
-                />
+                {...register("block", {
+                  required: "Block is required",
+                  maxLength: {
+                    value: 50,
+                    message: "Block should not exceed 50 characters",
+                  },
+                })}
+                className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                type="text"
+                placeholder="Block"
+              />
+              {errors.block && (
+                <p className="text-red-500 text-sm">{errors.block.message}</p>
+              )}
               </div>
             </div>
             <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
@@ -351,24 +563,40 @@ const ExhibitorForm = () => {
                   Sector
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Sector"
-                />
+                {...register("sector", {
+                  required: "Sector is required",
+                  maxLength: {
+                    value: 50,
+                    message: "Sector should not exceed 50 characters",
+                  },
+                })}
+                className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                type="text"
+                placeholder="Sector"
+              />
+              {errors.sector && (
+                <p className="text-red-500 text-sm">{errors.sector.message}</p>
+              )}
               </div>
               <div className="flex flex-col gap-y-3 my-4 md:my-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Area
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Area"
-                />
+                {...register("area", {
+                  required: "Area is required",
+                  maxLength: {
+                    value: 50,
+                    message: "Area should not exceed 50 characters",
+                  },
+                })}
+                className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                type="text"
+                placeholder="Area"
+              />
+              {errors.area && (
+                <p className="text-red-500 text-sm">{errors.area.message}</p>
+              )}
               </div>
 
               <div className="flex flex-col gap-y-3">
@@ -376,12 +604,20 @@ const ExhibitorForm = () => {
                   City
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="City"
-                />
+                {...register("city", {
+                  required: "City is required",
+                  maxLength: {
+                    value: 50,
+                    message: "City should not exceed 50 characters",
+                  },
+                })}
+                className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                type="text"
+                placeholder="City"
+              />
+              {errors.city && (
+                <p className="text-red-500 text-sm">{errors.city.message}</p>
+              )}
               </div>
             </div>
             <div className="w-full mt-4 md:mt-8 md:flex gap-x-8">
@@ -390,66 +626,117 @@ const ExhibitorForm = () => {
                   State / region
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="State / region"
-                />
+                {...register("stateRegion", {
+                  required: "State / region is required",
+                  maxLength: {
+                    value: 50,
+                    message: "State / region should not exceed 50 characters",
+                  },
+                })}
+                className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                type="text"
+                placeholder="State / region"
+              />
+              {errors.stateRegion && (
+                <p className="text-red-500 text-sm">
+                  {errors.stateRegion.message}
+                </p>
+              )}
               </div>
               <div className="flex flex-col gap-y-3 my-4 md:my-0">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Zip / Postal Code
                 </label>
                 <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Zip / Postal Code"
-                />
+                {...register("zipCode", {
+                  required: "Zip / Postal Code is required",
+                  maxLength: {
+                    value: 20,
+                    message:
+                      "Zip / Postal Code should not exceed 20 characters",
+                  },
+                })}
+                className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
+                type="text"
+                placeholder="Zip / Postal Code"
+              />
+              {errors.zipCode && (
+                <p className="text-red-500 text-sm">{errors.zipCode.message}</p>
+              )}
               </div>
 
               <div className="flex flex-col gap-y-3">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Country
                 </label>
-                <input
-                  className="md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Country"
-                />
+                <select
+                {...register("country", { required: "Country is required" })}
+                className="md:w-[316px] md:h-[80px] select py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-[#808080]"
+              >
+                <option value="">Select Country</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="India">India</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="China">China</option>
+                <option value="Japan">Japan</option>
+              </select>
+              {errors.country && (
+                <p className="text-red-500 text-sm">{errors.country.message}</p>
+              )}
               </div>
             </div>
             <div className="mt-4 md:mt-8">
-              <div className="flex flex-col gap-y-3">
-                <label className="text-[#231F20] text-2xl font-semibold">
-                  Participation in Other Exhibitions
-                </label>
-                <input
-                  className="w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Participation in Other Exhibitions"
-                />
-              </div>
+            <div className="flex flex-col gap-y-3">
+        <label className="text-[#231F20] text-2xl font-semibold">
+          Participation in Other Exhibitions
+        </label>
+        <input
+          {...register("exhibitionsParticipation", {
+            required: "Participation in Other Exhibitions is required",
+            maxLength: {
+              value: 200,
+              message: "Exhibitions Participation should not exceed 200 characters",
+            },
+          })}
+          className={`w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+            errors.exhibitionsParticipation ? "border-red-500" : ""
+          }`}
+          type="text"
+          placeholder="Participation in Other Exhibitions"
+        />
+        {errors.exhibitionsParticipation && (
+          <p className="text-red-500 text-sm">
+            {errors.exhibitionsParticipation.message}
+          </p>
+        )}
+      </div>
             </div>
             <div className="mt-4 md:mt-8">
-              <div className="flex flex-col gap-y-3">
-                <label className="text-[#231F20] text-2xl font-semibold">
-                  Type of business relation you are looking for
-                </label>
-                <input
-                  className="w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Type of business relation you are looking for"
-                />
-              </div>
+            <div className="flex flex-col gap-y-3">
+        <label className="text-[#231F20] text-2xl font-semibold">
+          Type of business relation you are looking for
+        </label>
+        <input
+          {...register("businessRelationType", {
+            required: "Business Relation Type is required",
+            maxLength: {
+              value: 150,
+              message: "Business Relation Type should not exceed 150 characters",
+            },
+          })}
+          className={`w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
+            errors.businessRelationType ? "border-red-500" : ""
+          }`}
+          type="text"
+          placeholder="Type of business relation you are looking for"
+        />
+        {errors.businessRelationType && (
+          <p className="text-red-500 text-sm">
+            {errors.businessRelationType.message}
+          </p>
+        )}
+      </div>
             </div>
           </div>
 
