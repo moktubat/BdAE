@@ -3,7 +3,7 @@ import arrowOutward from "../../../assets/arrowOutward.svg";
 
 const ExhibitorForm = () => {
   return (
-    <div className="p-20 border-[0.5px] border-[#231F20] rounded-3xl">
+    <div className="bg-white p-20 border-[0.5px] border-[#231F20] rounded-3xl">
       <form>
         <div>
           <div>

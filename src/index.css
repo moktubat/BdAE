@@ -6,10 +6,18 @@
 
 
 
-.active {
+.navActive {
   @apply font-semibold tracking-wide text-[#A81F25] transition-colors duration-200 underline-offset-8 underline;
 }
 
-.default {
+.navDefault {
   @apply font-semibold tracking-wide transition-colors duration-200 hover:text-[#A81F25];
+}
+
+.tabActive{
+  @apply w-1/2 text-[40px] font-bold uppercase text-white bg-[#231F20] border-none
+}
+
+.tabDefault{
+  @apply w-1/2 text-[40px] font-bold uppercase text-[#808080] bg-[#F0F0F0] border-none
 }

@@ -12,7 +12,7 @@ const NavBar = () => {
       <li>
         <NavLink
           to="/about"
-          className={({ isActive }) => (isActive ? "active" : "default")}
+          className={({ isActive }) => (isActive ? "navActive" : "navDefault")}
         >
           About
         </NavLink>
@@ -20,7 +20,7 @@ const NavBar = () => {
       <li>
         <NavLink
           to="/agenda"
-          className={({ isActive }) => (isActive ? "active" : "default")}
+          className={({ isActive }) => (isActive ? "navActive" : "navDefault")}
         >
           Agenda
         </NavLink>
@@ -28,7 +28,7 @@ const NavBar = () => {
       <li>
         <NavLink
           to="/speakers"
-          className={({ isActive }) => (isActive ? "active" : "default")}
+          className={({ isActive }) => (isActive ? "navActive" : "navDefault")}
         >
           Speakers
         </NavLink>
@@ -36,7 +36,7 @@ const NavBar = () => {
       <li>
         <NavLink
           to="/register"
-          className={({ isActive }) => (isActive ? "active border border-[#231F20] rounded-lg px-9 py-4" : "default border border-[#231F20] rounded-lg px-9 py-4")}
+          className={({ isActive }) => (isActive ? "navActive border border-[#231F20] rounded-lg px-9 py-4" : "navDefault border border-[#231F20] rounded-lg px-9 py-4")}
         >
           Register
         </NavLink>
