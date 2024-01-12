@@ -134,7 +134,7 @@ const ExhibitorForm = () => {
 
           <div>
             <h1 className="text-[32px] font-bold uppercase my-8 md:my-20">
-              Exhibitor Company Information
+            Secondary Contact Person
             </h1>
             <div className="md:flex justify-between">
               <div className="mr-8">
