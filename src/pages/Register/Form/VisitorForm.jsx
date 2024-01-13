@@ -1,6 +1,7 @@
 import "./VisitorForm.css";
 import arrowOutward from "../../../assets/arrowOutward.svg";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const VisitorForm = () => {
   const {
@@ -11,6 +12,13 @@ const VisitorForm = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Your information has been saved",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (
@@ -23,25 +31,30 @@ const VisitorForm = () => {
                 Title
               </label>
               <div className="flex text-2xl mt-4 md:mt-8">
-                <label className="block mr-4">
+                <div className="block mr-4">
                   <input
-                    type="checkbox"
-                    name="title"
+                    type="radio"
+                    name="visitorTitle"
                     value="Mr."
+                    {...register("visitorTitle", { required: true })}
                     className="mr-2 transform scale-150"
                   />
                   Mr.
-                </label>
-                <label className="block">
+                </div>
+                <div className="block">
                   <input
-                    type="checkbox"
-                    name="title"
+                    type="radio"
+                    name="visitorTitle"
                     value="Ms."
+                    {...register("visitorTitle", { required: true })}
                     className="mr-2 transform scale-150"
                   />
                   Ms.
-                </label>
+                </div>
               </div>
+              {errors.visitorTitle && (
+                <p className="text-red-500 mt-2">Title is required.</p>
+              )}
             </div>
 
             <div className="flex flex-col gap-y-3 my-4 md:py-0">
@@ -49,18 +62,18 @@ const VisitorForm = () => {
                 First Name
               </label>
               <input
-                {...register("firstName", {
+                {...register("visitorFirstName", {
                   required: "First Name is required",
                 })}
                 className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
-                  errors.firstName ? "border-red-500" : ""
+                  errors.visitorFirstName ? "border-red-500" : ""
                 }`}
                 type="text"
                 placeholder="First Name"
               />
-              {errors.firstName && (
+              {errors.visitorFirstName && (
                 <p className="text-red-500 text-sm">
-                  {errors.firstName.message}
+                  {errors.visitorFirstName.message}
                 </p>
               )}
             </div>
@@ -70,16 +83,18 @@ const VisitorForm = () => {
                 Last Name
               </label>
               <input
-                {...register("lastName", { required: "Last Name is required" })}
+                {...register("visitorLastName", {
+                  required: "Last Name is required",
+                })}
                 className={`md:w-[316px] md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
-                  errors.lastName ? "border-red-500" : ""
+                  errors.visitorLastName ? "border-red-500" : ""
                 }`}
                 type="text"
                 placeholder="Last Name"
               />
-              {errors.lastName && (
+              {errors.visitorLastName && (
                 <p className="text-red-500 text-sm">
-                  {errors.lastName.message}
+                  {errors.visitorLastName.message}
                 </p>
               )}
             </div>
@@ -90,7 +105,7 @@ const VisitorForm = () => {
                 Email Address
               </label>
               <input
-                {...register("email", {
+                {...register("visitorEmail", {
                   required: "Email Address is required",
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
@@ -98,13 +113,15 @@ const VisitorForm = () => {
                   },
                 })}
                 className={`w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
-                  errors.email ? "border-red-500" : ""
+                  errors.visitorEmail ? "border-red-500" : ""
                 }`}
                 type="email"
                 placeholder="Email Address"
               />
-              {errors.email && (
-                <p className="text-red-500 text-sm">{errors.email.message}</p>
+              {errors.visitorEmail && (
+                <p className="text-red-500 text-sm">
+                  {errors.visitorEmail.message}
+                </p>
               )}
             </div>
           </div>
@@ -115,7 +132,7 @@ const VisitorForm = () => {
                 Phone
               </label>
               <input
-                {...register("phone", {
+                {...register("visitorPhone", {
                   required: "Phone number is required",
                   pattern: {
                     value: /^[+]?[0-9]*$/,
@@ -123,13 +140,15 @@ const VisitorForm = () => {
                   },
                 })}
                 className={`w-full md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
-                  errors.phone ? "border-red-500" : ""
+                  errors.visitorPhone ? "border-red-500" : ""
                 }`}
                 type="tel"
                 placeholder="+8801234567890"
               />
-              {errors.phone && (
-                <p className="text-red-500 text-sm">{errors.phone.message}</p>
+              {errors.visitorPhone && (
+                <p className="text-red-500 text-sm">
+                  {errors.visitorPhone.message}
+                </p>
               )}
             </div>
           </div>
@@ -139,7 +158,7 @@ const VisitorForm = () => {
                 Company Name
               </label>
               <input
-                {...register("companyName", {
+                {...register("visitorCompanyName", {
                   required: "Company Name is required",
                   maxLength: {
                     value: 100,
@@ -147,14 +166,14 @@ const VisitorForm = () => {
                   },
                 })}
                 className={`md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
-                  errors.companyName ? "border-red-500" : ""
+                  errors.visitorCompanyName ? "border-red-500" : ""
                 }`}
                 type="text"
                 placeholder="Company Name"
               />
-              {errors.companyName && (
+              {errors.visitorCompanyName && (
                 <p className="text-red-500 text-sm">
-                  {errors.companyName.message}
+                  {errors.visitorCompanyName.message}
                 </p>
               )}
             </div>
@@ -163,7 +182,7 @@ const VisitorForm = () => {
                 Industry Type
               </label>
               <input
-                {...register("industryType", {
+                {...register("visitorIndustryType", {
                   required: "Industry Type is required",
                   maxLength: {
                     value: 100,
@@ -171,14 +190,14 @@ const VisitorForm = () => {
                   },
                 })}
                 className={`md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
-                  errors.industryType ? "border-red-500" : ""
+                  errors.visitorIndustryType ? "border-red-500" : ""
                 }`}
                 type="text"
                 placeholder="Industry Type"
               />
-              {errors.industryType && (
+              {errors.visitorIndustryType && (
                 <p className="text-red-500 text-sm">
-                  {errors.industryType.message}
+                  {errors.visitorIndustryType.message}
                 </p>
               )}
             </div>
@@ -189,7 +208,7 @@ const VisitorForm = () => {
                 Job Title
               </label>
               <input
-                {...register("jobTitle", {
+                {...register("visitorJobTitle", {
                   required: "Job Title is required",
                   maxLength: {
                     value: 100,
@@ -197,14 +216,14 @@ const VisitorForm = () => {
                   },
                 })}
                 className={`md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
-                  errors.jobTitle ? "border-red-500" : ""
+                  errors.visitorJobTitle ? "border-red-500" : ""
                 }`}
                 type="text"
                 placeholder="Job Title"
               />
-              {errors.jobTitle && (
+              {errors.visitorJobTitle && (
                 <p className="text-red-500 text-sm">
-                  {errors.jobTitle.message}
+                  {errors.visitorJobTitle.message}
                 </p>
               )}
             </div>
@@ -213,7 +232,7 @@ const VisitorForm = () => {
                 Concern Department
               </label>
               <input
-                {...register("concernDepartment", {
+                {...register("visitorConcernDepartment", {
                   required: "Concern Department is required",
                   maxLength: {
                     value: 100,
@@ -222,14 +241,14 @@ const VisitorForm = () => {
                   },
                 })}
                 className={`md:h-[80px] py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-none ${
-                  errors.concernDepartment ? "border-red-500" : ""
+                  errors.visitorConcernDepartment ? "border-red-500" : ""
                 }`}
                 type="text"
                 placeholder="Concern Department"
               />
-              {errors.concernDepartment && (
+              {errors.visitorConcernDepartment && (
                 <p className="text-red-500 text-sm">
-                  {errors.concernDepartment.message}
+                  {errors.visitorConcernDepartment.message}
                 </p>
               )}
             </div>
@@ -240,7 +259,7 @@ const VisitorForm = () => {
                 House No.
               </label>
               <input
-                {...register("houseNo", {
+                {...register("visitorHouseNo", {
                   required: "House No. is required",
                   maxLength: {
                     value: 50,
@@ -251,8 +270,10 @@ const VisitorForm = () => {
                 type="text"
                 placeholder="House No."
               />
-              {errors.houseNo && (
-                <p className="text-red-500 text-sm">{errors.houseNo.message}</p>
+              {errors.visitorHouseNo && (
+                <p className="text-red-500 text-sm">
+                  {errors.visitorHouseNo.message}
+                </p>
               )}
             </div>
             <div className="flex flex-col gap-y-3 my-4 md:my-0">
@@ -260,7 +281,7 @@ const VisitorForm = () => {
                 Road No.
               </label>
               <input
-                {...register("roadNo", {
+                {...register("visitorRoadNo", {
                   required: "Road No. is required",
                   maxLength: {
                     value: 50,
@@ -271,8 +292,10 @@ const VisitorForm = () => {
                 type="text"
                 placeholder="Road No."
               />
-              {errors.roadNo && (
-                <p className="text-red-500 text-sm">{errors.roadNo.message}</p>
+              {errors.visitorRoadNo && (
+                <p className="text-red-500 text-sm">
+                  {errors.visitorRoadNo.message}
+                </p>
               )}
             </div>
 
@@ -281,7 +304,7 @@ const VisitorForm = () => {
                 Block
               </label>
               <input
-                {...register("block", {
+                {...register("visitorBlock", {
                   required: "Block is required",
                   maxLength: {
                     value: 50,
@@ -292,8 +315,10 @@ const VisitorForm = () => {
                 type="text"
                 placeholder="Block"
               />
-              {errors.block && (
-                <p className="text-red-500 text-sm">{errors.block.message}</p>
+              {errors.visitorBlock && (
+                <p className="text-red-500 text-sm">
+                  {errors.visitorBlock.message}
+                </p>
               )}
             </div>
           </div>
@@ -303,7 +328,7 @@ const VisitorForm = () => {
                 Sector
               </label>
               <input
-                {...register("sector", {
+                {...register("visitorSector", {
                   required: "Sector is required",
                   maxLength: {
                     value: 50,
@@ -314,8 +339,10 @@ const VisitorForm = () => {
                 type="text"
                 placeholder="Sector"
               />
-              {errors.sector && (
-                <p className="text-red-500 text-sm">{errors.sector.message}</p>
+              {errors.visitorSector && (
+                <p className="text-red-500 text-sm">
+                  {errors.visitorSector.message}
+                </p>
               )}
             </div>
             <div className="flex flex-col gap-y-3 my-4 md:my-0">
@@ -323,7 +350,7 @@ const VisitorForm = () => {
                 Area
               </label>
               <input
-                {...register("area", {
+                {...register("visitorArea", {
                   required: "Area is required",
                   maxLength: {
                     value: 50,
@@ -334,8 +361,10 @@ const VisitorForm = () => {
                 type="text"
                 placeholder="Area"
               />
-              {errors.area && (
-                <p className="text-red-500 text-sm">{errors.area.message}</p>
+              {errors.visitorArea && (
+                <p className="text-red-500 text-sm">
+                  {errors.visitorArea.message}
+                </p>
               )}
             </div>
 
@@ -344,7 +373,7 @@ const VisitorForm = () => {
                 City
               </label>
               <input
-                {...register("city", {
+                {...register("visitorCity", {
                   required: "City is required",
                   maxLength: {
                     value: 50,
@@ -355,8 +384,10 @@ const VisitorForm = () => {
                 type="text"
                 placeholder="City"
               />
-              {errors.city && (
-                <p className="text-red-500 text-sm">{errors.city.message}</p>
+              {errors.visitorCity && (
+                <p className="text-red-500 text-sm">
+                  {errors.visitorCity.message}
+                </p>
               )}
             </div>
           </div>
@@ -366,7 +397,7 @@ const VisitorForm = () => {
                 State / region
               </label>
               <input
-                {...register("stateRegion", {
+                {...register("visitorStateRegion", {
                   required: "State / region is required",
                   maxLength: {
                     value: 50,
@@ -377,9 +408,9 @@ const VisitorForm = () => {
                 type="text"
                 placeholder="State / region"
               />
-              {errors.stateRegion && (
+              {errors.visitorStateRegion && (
                 <p className="text-red-500 text-sm">
-                  {errors.stateRegion.message}
+                  {errors.visitorStateRegion.message}
                 </p>
               )}
             </div>
@@ -388,7 +419,7 @@ const VisitorForm = () => {
                 Zip / Postal Code
               </label>
               <input
-                {...register("zipCode", {
+                {...register("visitorZipCode", {
                   required: "Zip / Postal Code is required",
                   maxLength: {
                     value: 20,
@@ -400,8 +431,10 @@ const VisitorForm = () => {
                 type="text"
                 placeholder="Zip / Postal Code"
               />
-              {errors.zipCode && (
-                <p className="text-red-500 text-sm">{errors.zipCode.message}</p>
+              {errors.visitorZipCode && (
+                <p className="text-red-500 text-sm">
+                  {errors.visitorZipCode.message}
+                </p>
               )}
             </div>
 
@@ -410,7 +443,9 @@ const VisitorForm = () => {
                 Country
               </label>
               <select
-                {...register("country", { required: "Country is required" })}
+                {...register("visitorCountry", {
+                  required: "Country is required",
+                })}
                 className="md:w-[316px] md:h-[80px] select py-2 px-3 text-[#808080] text-2xl border-[0.5px] border-[#231F20] rounded-md focus:outline-[#808080]"
               >
                 <option value="">Select Country</option>
@@ -421,8 +456,10 @@ const VisitorForm = () => {
                 <option value="China">China</option>
                 <option value="Japan">Japan</option>
               </select>
-              {errors.country && (
-                <p className="text-red-500 text-sm">{errors.country.message}</p>
+              {errors.visitorCountry && (
+                <p className="text-red-500 text-sm">
+                  {errors.visitorCountry.message}
+                </p>
               )}
             </div>
           </div>
@@ -437,7 +474,7 @@ const VisitorForm = () => {
                   type="checkbox"
                   name="sectors"
                   value="Apparel/Textiles"
-                  {...register("sectors", {
+                  {...register("visitorSectors", {
                     required: "Please select an industry",
                   })}
                   className="hidden"
@@ -456,7 +493,7 @@ const VisitorForm = () => {
                   type="checkbox"
                   name="sectors"
                   value="Leather"
-                  {...register("sectors", {
+                  {...register("visitorSectors", {
                     required: "Please select an industry",
                   })}
                   className="hidden"
@@ -475,7 +512,7 @@ const VisitorForm = () => {
                   type="checkbox"
                   name="sectors"
                   value="Digital Industry"
-                  {...register("sectors", {
+                  {...register("visitorSectors", {
                     required: "Please select an industry",
                   })}
                   className="hidden"
@@ -494,7 +531,7 @@ const VisitorForm = () => {
                   type="checkbox"
                   name="sectors"
                   value="Pharmaceutical/Health"
-                  {...register("sectors", {
+                  {...register("visitorSectors", {
                     required: "Please select an industry",
                   })}
                   className="hidden"
@@ -513,7 +550,7 @@ const VisitorForm = () => {
                   type="checkbox"
                   name="sectors"
                   value="Light Engineering/Electronic"
-                  {...register("sectors", {
+                  {...register("visitorSectors", {
                     required: "Please select an industry",
                   })}
                   className="hidden"
@@ -532,7 +569,7 @@ const VisitorForm = () => {
                   type="checkbox"
                   name="sectors"
                   value="Agro-Food"
-                  {...register("sectors", {
+                  {...register("visitorSectors", {
                     required: "Please select an industry",
                   })}
                   className="hidden"
@@ -551,7 +588,7 @@ const VisitorForm = () => {
                   type="checkbox"
                   name="sectors"
                   value="FMCG"
-                  {...register("sectors", {
+                  {...register("visitorSectors", {
                     required: "Please select an industry",
                   })}
                   className="hidden"
@@ -570,7 +607,7 @@ const VisitorForm = () => {
                   type="checkbox"
                   name="sectors"
                   value="Ceramic"
-                  {...register("sectors", {
+                  {...register("visitorSectors", {
                     required: "Please select an industry",
                   })}
                   className="hidden"
@@ -589,7 +626,7 @@ const VisitorForm = () => {
                   type="checkbox"
                   name="sectors"
                   value="Jute"
-                  {...register("sectors", {
+                  {...register("visitorSectors", {
                     required: "Please select an industry",
                   })}
                   className="hidden"
@@ -608,7 +645,7 @@ const VisitorForm = () => {
                   type="checkbox"
                   name="sectors"
                   value="Bicycle"
-                  {...register("sectors", {
+                  {...register("visitorSectors", {
                     required: "Please select an industry",
                   })}
                   className="hidden"
