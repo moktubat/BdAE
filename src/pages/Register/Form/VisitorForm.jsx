@@ -2,6 +2,7 @@ import "./VisitorForm.css";
 import arrowOutward from "../../../assets/arrowOutward.svg";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { addVisitorInfo } from "../../../api/fetch";
 
 const VisitorForm = () => {
   const {
@@ -10,17 +11,32 @@ const VisitorForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Your information has been saved",
-      showConfirmButton: false,
-      timer: 1500,
-    });
+  const onSubmit = async (data) => {
+    try {
+      const result = await addVisitorInfo(data);
+      if (result && result.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your information has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...Try Again",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...Try Again",
+      });
+    }
   };
-
+  
   return (
     <div className="bg-white p-4 md:p-20 border-[0.5px] border-[#231F20] rounded-3xl">
       <form onSubmit={handleSubmit(onSubmit)}>
