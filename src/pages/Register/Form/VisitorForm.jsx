@@ -41,7 +41,7 @@ const VisitorForm = () => {
     <div className="bg-white p-4 md:p-20 border-[0.5px] border-[#231F20] rounded-3xl">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <div className="md:flex justify-between">
+          <div className="md:flex justify-between items-center">
             <div className="mr-8">
               <label className="text-[#231F20] text-2xl font-semibold">
                 Title

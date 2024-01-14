@@ -45,7 +45,7 @@ const ExhibitorForm = () => {
             <h1 className="text-[32px] font-bold uppercase mb-5 md:mb-20">
               Exhibitor Contact Information
             </h1>
-            <div className="md:flex justify-between">
+            <div className="md:flex justify-between items-center">
               <div className="mr-8">
                 <label className="text-[#231F20] text-2xl font-semibold">
                   Title
