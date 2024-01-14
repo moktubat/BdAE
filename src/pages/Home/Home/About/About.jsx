@@ -5,7 +5,7 @@ const About = () => {
     <div className="md:w-[1200px] mx-auto py-8 md:py-16 px-4 md:px-0">
       <div className="md:flex gap-11 mb-14">
         <div>
-          <h1 className="text-[#231F20] text-6xl md:text-9xl font-bold mb-4 leading-tight">
+          <h1 className="text-[#231F20] text-5xl md:text-9xl font-bold mb-4 leading-tight">
             About
             <br className="hidden sm:inline" />
             {} The Expo
