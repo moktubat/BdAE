@@ -13,8 +13,8 @@ const Banner = () => {
           Bangladesh Apparel Expo 2023!
         </p>
         <div>
-          <img className="absolute top-1 -left-[57px]" src={dot} alt="" />
-          <img className="absolute bottom-1 -right-[57px]" src={dot} alt="" />
+          <img className="absolute top-1 -left-[110px] md:-left-[57px]" src={dot} alt="" />
+          <img className="absolute bottom-1 -right-[110px] md:-right-[57px]" src={dot} alt="" />
         </div>
       </div>
     </div>
