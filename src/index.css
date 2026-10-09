@@ -1,23 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;700&family=Oswald:wght@600&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
-.navActive {
-  @apply font-semibold tracking-wide text-[#A81F25] transition-colors duration-200 underline-offset-8 underline;
+@layer base {
+  body {
+    @apply font-inter;
+  }
 }
 
-.navDefault {
-  @apply font-semibold tracking-wide transition-colors duration-200 hover:text-[#A81F25];
-}
+@layer components {
+  .navActive {
+    @apply font-inter font-semibold tracking-wide text-[#A81F25] transition-colors duration-200 underline-offset-8 underline;
+  }
 
-.tabActive{
-  @apply w-1/2 text-[40px] font-bold uppercase text-white bg-[#231F20] border-none
-}
+  .navDefault {
+    @apply font-inter font-semibold tracking-wide transition-colors duration-200 hover:text-[#A81F25];
+  }
 
-.tabDefault{
-  @apply w-1/2 text-[40px] font-bold uppercase text-[#808080] bg-[#F0F0F0] border-none
+  .tabActive {
+    @apply font-oswald w-1/2 text-[40px] font-semibold uppercase text-white bg-[#231F20] py-[24px] border-none tracking-[-3%];
+  }
+
+  .tabDefault {
+    @apply font-oswald w-1/2 text-[40px] font-semibold uppercase text-[#808080] bg-[#F0F0F0] py-[24px] border-none tracking-[-3%];
+  }
 }
