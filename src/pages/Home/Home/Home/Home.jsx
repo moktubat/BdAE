@@ -13,27 +13,27 @@ const Home = () => {
     <div>
       <Hero />
 
-      <hr className="md:w-[1200px] border-0 h-[1px] bg-[#808080]" />
+      <hr className="md:w-[1200px] mx-auto border-0 h-[1px] bg-[#808080]" />
 
       <Experience />
 
-      <hr className="md:w-[1200px] border-0 h-[1px] bg-[#808080]" />
+      <hr className="md:w-[1200px] mx-auto border-0 h-[1px] bg-[#808080]" />
 
       <About />
 
-      <hr className="md:w-[1200px] border-0 h-[1px] bg-[#808080]" />
+      <hr className="md:w-[1200px] mx-auto border-0 h-[1px] bg-[#808080]" />
 
       <Objectives />
 
-      <hr className="md:w-[1200px] border-0 h-[1px] bg-[#808080]" />
+      <hr className="md:w-[1200px] mx-auto border-0 h-[1px] bg-[#808080]" />
 
       <Organized />
 
-      <hr className="md:w-[1200px] border-0 h-[1px] bg-[#808080]" />
+      <hr className="md:w-[1200px] mx-auto border-0 h-[1px] bg-[#808080]" />
 
       <Exhibitor />
 
-      <hr className="md:w-[1200px] border-0 h-[1px] bg-[#808080]" />
+      <hr className="md:w-[1200px] mx-auto border-0 h-[1px] bg-[#808080]" />
 
       <Register />
     </div>
